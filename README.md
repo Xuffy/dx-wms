@@ -7,7 +7,7 @@
 
 ---
 
-模版在[layui-wms](https://github.com/Xuffy/layui-wms)基础上重构，基于`layui`和`vue.js`。
+模版在[layui-wms](https://github.com/Xuffy/layui-wms)基础上重构，基于`layui`和`vue.js`。[获取源码](https://github.com/Xuffy/dx-wms)
 
 启动说明
 ===
