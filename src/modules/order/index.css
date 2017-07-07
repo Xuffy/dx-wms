@@ -1,0 +1,28 @@
+.dx-operation-bar .layui-form-item {
+  margin-bottom: 10px;
+}
+
+#content-app .layui-btn-group {
+  margin-top: 30px;
+}
+
+#content-app .layui-btn-group .layui-btn {
+  background-color: #9f9f9f;
+  color: #555555;
+  margin-bottom: 1px;
+}
+
+#content-app .dx-list-default .table-operation {
+  width: 60px;
+}
+
+#content-app .dx-list-default .table-operation:hover {
+  text-decoration: underline;
+}
+
+/*响应式*/
+@media screen and (max-width: 1280px) {
+  #content-app .layui-table tr {
+
+  }
+}

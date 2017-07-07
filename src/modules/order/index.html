@@ -1,0 +1,180 @@
+<!--样式-->
+<link rel="stylesheet" href="index.css?__inline">
+
+<section class="dx-list-default" id="content-app">
+  <div class="dx-operation-bar">
+    <form class="layui-form dx-form">
+      <div class="layui-form-item">
+        <label class="layui-form-label">工单编号</label>
+        <div class="layui-input-inline">
+          <input type="tel" name="username" lay-verify="username" placeholder="工单编号" autocomplete="off"
+                 class="layui-input">
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <label class="layui-form-label">工单类型</label>
+        <div class="layui-input-inline">
+          <select name="role">
+            <option value="0">全部</option>
+            <option value="1">正常不含胚工单</option>
+            <option value="2">正常含胚工单</option>
+            <option value="3">返工不含胚工单</option>
+            <option value="4">返工不含胚工单</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <label class="layui-form-label">商家名称</label>
+        <div class="layui-input-inline">
+          <input type="tel" name="username" lay-verify="username" placeholder="商家名称" autocomplete="off"
+                 class="layui-input">
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <label class="layui-form-label">服装类型</label>
+        <div class="layui-input-inline" style="width: 90px">
+          <select name="role">
+            <option value="0">全部</option>
+            <option value="1">男</option>
+            <option value="2">女</option>
+          </select>
+        </div>
+        <div class="layui-input-inline" style="width: 90px">
+          <select name="role">
+            <option value="0">全部</option>
+            <option value="1">套装</option>
+            <option value="1">外套</option>
+            <option value="1">裤装</option>
+            <option value="1">马甲</option>
+            <option value="2">西装</option>
+            <option value="2">衬衫</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <label class="layui-form-label">工单状态</label>
+        <div class="layui-input-inline">
+          <select name="role">
+            <option value="0">全部</option>
+            <option value="1">待接单</option>
+            <option value="2">待商家修改</option>
+            <option value="3">待分配</option>
+            <option value="3">生产中</option>
+            <option value="3">待质检</option>
+            <option value="3">待发货</option>
+            <option value="3">待商家验收</option>
+            <option value="3">待工厂收货</option>
+            <option value="3">已完成</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <label class="layui-form-label">工单时间</label>
+        <div class="layui-input-inline" style="width: 100px">
+          <input type="text" name="date" id="start_date" lay-verify="date" placeholder="开始时间" autocomplete="off"
+                 class="layui-input" onclick="layui.laydate({elem: this})">
+        </div>
+        <label class="layui-form-label" style="padding-left: 0;padding-right: 10px">-</label>
+        <div class="layui-input-inline" style="width: 100px">
+          <input type="text" name="date" id="end_date" lay-verify="date" placeholder="截至时间" autocomplete="off"
+                 class="layui-input" onclick="layui.laydate({elem: this})">
+        </div>
+      </div>
+
+      <div class="layui-form-item">
+        <div class="layui-input-inline">
+          <button type="button" class="layui-btn" lay-submit="" lay-filter="search">查询</button>
+        </div>
+      </div>
+
+    </form>
+
+    <div class="layui-btn-group">
+      <button class="layui-btn layui-btn-small">待接单(11)</button>
+      <button class="layui-btn layui-btn-small">待分配(0)</button>
+      <button class="layui-btn layui-btn-small">生产中(0)</button>
+      <button class="layui-btn layui-btn-small">待质检(0)</button>
+      <button class="layui-btn layui-btn-small">待发货(0)</button>
+      <button class="layui-btn layui-btn-small">待商家验收(0)</button>
+      <button class="layui-btn layui-btn-small">待工厂收货(0)</button>
+    </div>
+  </div>
+
+
+  <table class="layui-table">
+    <thead>
+    <tr>
+      <th>序号</th>
+      <th>工单编号</th>
+      <th>工单类型</th>
+      <th>工单状态</th>
+      <th>服装类型</th>
+      <th>商家名称</th>
+      <th class="dx-md-hide">设计师姓名</th>
+      <th class="dx-md-hide">设计师电话</th>
+      <th>工单创建时间</th>
+      <th class="dx-md-hide">上一环节操作时间</th>
+      <th class="table-operation-box">操作</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr v-for="item in list">
+      <td v-text="item.user"></td>
+      <td>工单编号</td>
+      <td>工单类型</td>
+      <td>工单状态</td>
+      <td>服装类型</td>
+      <td>商家名称</td>
+      <td class="dx-md-hide">兰冲</td>
+      <td class="dx-md-hide">超级管理员</td>
+      <td>工单创建时间</td>
+      <td class="dx-md-hide">13578899767</td>
+      <td class="table-operation-box">
+        <span class="table-operation user-info" @click="goInfo">查看</span>
+        <span class="table-operation user-update" @click="operateBox(1)">接收</span>
+        <span class="table-operation user-ban" @click="operateBox(0)">拒绝</span>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div id="dx-page-default" class="dx-page-default"></div>
+
+  <div id="operateBox" class="dx-info-default layui-hide">
+    <form class="layui-form" action="" style="padding-right: 25px;padding-top: 20px;">
+      <div class="layui-form-item">
+        <label class="layui-form-label">负责人</label>
+        <div class="layui-input-block dx-input-required">
+          <input type="text" name="username" lay-verify="required" autocomplete="off" placeholder="请填写负责人"
+                 class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <label class="layui-form-label">联系电话</label>
+        <div class="layui-input-block dx-input-required">
+          <input type="password" name="oldPassword" lay-verify="required" autocomplete="off" placeholder="请填写电话"
+                 class="layui-input">
+        </div>
+      </div>
+      <div class="layui-form-item layui-form-text">
+        <label class="layui-form-label" v-text="operateType === 1 ? '备注' : '拒绝原因'"></label>
+        <div class="layui-input-block">
+          <textarea placeholder="请填写内容" class="layui-textarea"></textarea>
+        </div>
+      </div>
+      <div class="layui-form-item">
+        <div class="layui-input-block">
+          <button class="layui-btn" lay-submit="" lay-filter="updatePassword">提交</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>
+
+<script type="text/javascript" src="index.js?__inline"></script>

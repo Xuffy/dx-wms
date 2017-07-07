@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>TailorX工厂后台管理系统</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="bookmark" href="favicon.ico"/>
+  <link rel="stylesheet" href="plugins/layui/css/layui.css">
+  <link rel="stylesheet" href="styles/css/main.css">
+  <link rel="stylesheet" href="styles/css/default.theme.css?__inline">
+  <link rel="stylesheet" href="styles/css/media.css?__inline">
+</head>
+<body>
+<div class="layui-progress dx-progress-page layui-hide" id="dx-progress-page" lay-filter="request-progress">
+  <div class="layui-progress-bar layui-bg-blue" lay-percent="0"></div>
+</div>
+
+<!--header 导航栏-->
+<header class="layui-layout layui-layout-admin" id="header-app">
+  <div class="layui-header dx-header header header-demo">
+    <div class="layui-main">
+      <a class="logo" href="/">
+        <img src="images/logo.png" alt="layui">
+      </a>
+      <h2 class="title">
+        <span class="text dx-md-hide">TailorX</span>
+        <span class="menu-icon dx-md-show" @click="showMenu">
+            <i class="iconfont icon-portal-icon-caidan"></i>
+          </span>
+      </h2>
+      <ul class="dx-nav">
+        <li class="name dx-md-hide"><a href="https://github.com/Xuffy/layui-wms" target="_blank">欢迎您，xuffy</a></li>
+        <!--<li id="updatePassword-btn">
+          <span class="icon"><i class="iconfont icon-moban162"></i></span><span>修改密码</span>
+        </li>-->
+        <li class="logout" @click="goLogin">
+          <span class="icon"><i class="iconfont icon-tuichu"></i></span><span class="dx-md-hide">退出登录</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<!--menu 左侧菜单-->
+<div class="dx-menu-box">
+  <nav class="dx-menu">
+    <ul class="layui-nav layui-nav-tree" lay-filter="menu">
+      <li class="layui-nav-item layui-nav-itemed">
+        <a href="javascript:;">
+          <i class="iconfont icon-dingdan3"></i><span class="menu-title">工单管理</span>
+        </a>
+        <dl class="layui-nav-child">
+          <dd dx-menu="order"><a href="javascript:;">工单列表</a></dd>
+        </dl>
+      </li>
+      <!--<li class="layui-nav-item">
+        <a href="javascript:;">
+          <i class="iconfont icon-yonghu"></i><span class="menu-title">APP用户管理</span>
+        </a>
+        <dl class="layui-nav-child">
+          <dd><a href="javascript:;">APP用户</a></dd>
+          <dd><a href="javascript:;">黑名单</a></dd>
+        </dl>
+      </li>-->
+    </ul>
+  </nav>
+</div>
+
+
+<!--内容区域-->
+<div class="dx-module">
+  <div class="dx-breadcrumb">
+    <span class="layui-breadcrumb">
+      <!--<a href="javascript:void(0);">权限管理</a>
+      <a><cite>后台管理员</cite></a>-->
+    </span>
+  </div>
+  <div class="dx-content" id="dx-content">
+    <section style="position: relative;width: 100%;height: 100%;">
+      <h5 class="dx-welcome-title">欢迎进入后台管理系统，请点击左侧菜单开始操作吧！
+      </h5>
+    </section>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="plugins/layui/layui.js"></script>
+<script type="text/javascript" src="plugins/underscore-min.js"></script>
+<script type="text/javascript" src="plugins/vue.js"></script>
+<script type="text/javascript" src="javascript/main.js?__inline"></script>
+<script type="text/javascript" src="app.js?__inline"></script>
+<script type="text/javascript">
+  layui.use(['layer', 'element', '_route', 'form'], function () {
+    var layer = layui.layer
+      , element = layui.element()
+      , form = layui.form()
+      , _route = layui._route;
+
+    window.$ = layui.jquery;
+
+    // 初始化欢迎页面
+    _route.setBreadcrumb(null, {hide: true});
+
+    // 监听导航点击
+    element.on('nav(menu)', function (elem) {
+      var mUrl = elem.attr('dx-menu');
+      !_.isEmpty(mUrl) && _route.go(mUrl);
+      $('.dx-menu-box.show').removeClass('show');
+    });
+
+    // 点击屏幕隐藏menu
+    $('.dx-menu-box').on('click', function () {
+      $(this).removeClass('show');
+    });
+
+    // 阻止冒泡
+    $('.dx-menu').on('click', function (e) {
+      e.stopPropagation();
+    });
+
+    new Vue({
+      el: '#header-app',
+      data: {},
+      methods: {
+        showMenu: function () {
+          $('.dx-menu-box').toggleClass('show');
+        },
+        goLogin: function () {
+          layer.confirm('是否确认退出登录？', function () {
+            window.location.href = 'login.html';
+          });
+        }
+      }
+    });
+
+  });
+</script>
+</body>
+</html>

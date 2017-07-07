@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+  <title>登录-TailorX Factory</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="plugins/layui/css/layui.css">
+  <link rel="stylesheet" href="styles/css/main.css">
+  <style>body{background-color:#fff}.login-top{position:absolute;width:100%;height:398px;background-image:url("images/login-back.jpg");background-position:center;z-index:-1}.login-footer{position:absolute;bottom:0;color:#fff;background-color:#2f2f2f;width:100%;padding-top:20px;padding-bottom:20px;font-size:12px;text-align:center;z-index:-1}.login-footer a{color:#fff}.login-footer p{line-height:24px}.login-box{width:500px;height:400px;background-color:#fff;position:absolute;top:45%;left:50%;margin-top:-200px;margin-left:-250px;-webkit-box-shadow:0 0 10px rgba(0,0,0,.3);box-shadow:0 0 10px rgba(0,0,0,.3)}.login-box .logo{display:inline-block;background-image:url("images/logo.png");width:70px;height:70px;vertical-align:middle;margin:30px 20px 20px 0;-webkit-background-size:100% 100%;background-size:100% 100%}.login-box .title{display:inline-block;vertical-align:middle;font-size:30px}.login-form{padding-left:45px;padding-right:45px;margin-top:15px}.login-form .layui-form-label{width:auto}.login-form .layui-form-label i{font-size:18px}.login-form .layui-input{border:0;-webkit-border-radius:0;border-radius:0;padding-left:0;border-bottom:1px solid #e6e6e6}.login-form .layui-input-inline{width:340px}.login-form .placeholder{position:absolute;z-index:2;color:#b3b3b3;left:48px;bottom:10px;font-size:16px;-webkit-transition:color ease .3s,-webkit-transform ease .3s;transition:color ease .3s,-webkit-transform ease .3s;-moz-transition:transform ease .3s,color ease .3s,-moz-transform ease .3s;transition:transform ease .3s,color ease .3s;transition:transform ease .3s,color ease .3s,-webkit-transform ease .3s,-moz-transform ease .3s}.login-form .layui-form-item{position:relative}.login-form .layui-form-item:before{content:'';position:absolute;bottom:0;height:3px;width:0;left:48px;z-index:2;background-color:#f36;-webkit-transition:width .6s;-moz-transition:width .6s;transition:width .6s}.login-form .layui-form-item.active:before{width:340px}.login-form .layui-form-item.exist .placeholder{-webkit-transform:translateY(-120%) translateX(-10%) scale(.82);-moz-transform:translateY(-120%) translateX(-10%) scale(.82);-ms-transform:translateY(-120%) translateX(-10%) scale(.82);transform:translateY(-120%) translateX(-10%) scale(.82)}.login-form .layui-form-item.active .placeholder{-webkit-transform:translateY(-120%) translateX(-10%) scale(.82);-moz-transform:translateY(-120%) translateX(-10%) scale(.82);-ms-transform:translateY(-120%) translateX(-10%) scale(.82);transform:translateY(-120%) translateX(-10%) scale(.82);color:#f36}.login-form .layui-form-item.active .layui-form-label i{color:#f36}.login-form .layui-btn{background-color:#f36;width:100%}</style>
+</head>
+<body>
+<div class="login-top"></div>
+<section class="login-box" id="login-app">
+  <div style="text-align: center">
+    <i class="logo"></i>
+    <span class="title">TailorX Factory</span>
+  </div>
+
+  <div class="login-form">
+    <div class="layui-form-item" @click="clickInput($event,'usernameFocus')"
+         v-bind:class="[usernameFocus]">
+      <span class="placeholder">您的手机号或用户名</span>
+      <label class="layui-form-label"><i class="iconfont icon-shouji"></i></label>
+      <div class="layui-input-inline">
+        <input type="text" placeholder="" autocomplete="off" class="layui-input username"
+               v-on:blur="usernameFocus = username ? 'exist' : ''" v-model="username">
+      </div>
+    </div>
+    <div class="layui-form-item" style="margin-top: 30px" @click="clickInput($event,'passwordFocus')"
+         v-bind:class="[passwordFocus]">
+      <span class="placeholder">密码</span>
+      <label class="layui-form-label"><i class="iconfont icon-suo"></i></label>
+      <div class="layui-input-inline">
+        <input type="password" autocomplete="off" class="layui-input password"
+               v-on:blur="passwordFocus = password ? 'exist' : ''" v-model="password">
+      </div>
+    </div>
+      <div class="layui-form-item" style="margin-top: 40px">
+        <div class="layui-input-block" style="margin-left: 48px;margin-right: 20px">
+          <button type="button" class="layui-btn" @click="submitLogin">登录</button>
+        </div>
+      </div>
+  </div>
+</section>
+
+<footer class="login-footer">
+  <p>联系电话：<a href="tel:021-60499347">021-60499347</a> &nbsp;&nbsp;
+    地址：上海市黄浦区马当路388号复兴广场E栋2楼</p>
+  <p>Copyright © 2015-2017 &nbsp;&nbsp; www.tailorx.cn. All rights reserved.tailorx.</p>
+</footer>
+
+<script type="text/javascript" src="plugins/layui/layui.js"></script>
+<script type="text/javascript" src="plugins/underscore-min.js"></script>
+<script type="text/javascript" src="plugins/vue.js"></script>
+<script type="text/javascript">"use strict";String.prototype.format=function(e){if(arguments.length>0){var r=this;if(1==arguments.length&&"object"==typeof e)for(var t in e)r=r.replace(new RegExp("({"+t+"})","g"),e[t]);else for(var n=0;n<arguments.length;n++){if(void 0==arguments[n])return"";var g=new RegExp("({["+n+"]})","g");r=r.replace(g,arguments[n])}return r}return this};</script>
+<script type="text/javascript">"use strict";!function(){layui.config({version:!0,base:"layui_modules/"}).extend({_route:"route",_ajax:"ajax",_config:"config",_view:"view"}),layui.use(["_route","_config"],function(){{var i=layui._route;layui._config}i.config.base="modules/{0}/index.html"})}();</script>
+<script type="text/javascript">
+  layui.use(['layer', 'element', '_route', 'form'], function () {
+    var $=layui.jquery
+      , vue;
+    vue = new Vue({
+      el:'#login-app',
+      data:{usernameFocus:'',passwordFocus:false,username:'',password:''},
+      methods:{
+        clickInput:function (_this,key) {
+          var e=$(_this.currentTarget);
+          this[key]='active';
+          e.find('input').focus();
+        },
+        submitLogin:function () {
+          var str,strEl;
+          if(!this.username){
+            str='请输入用户名';
+            strEl='username';
+          }else if(!this.password){
+            str='请输入密码';
+            strEl='password';
+          }
+          str&&strEl&&layer.tips(str, '.'+strEl, {
+            tips: [1, '#ff3366']
+          });
+
+          if(this.username&&this.password){
+            window.location.href='index.html';
+          }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

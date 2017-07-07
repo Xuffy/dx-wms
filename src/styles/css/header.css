@@ -1,0 +1,94 @@
+#header-app{
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+.dx-header {
+  border-bottom: none !important;
+  height: 70px;
+  background-color: #242b33!important;
+}
+
+.dx-header .logo {
+  position: absolute;
+  width: 210px;
+  z-index: 2;
+  line-height: 70px;
+  text-align: center;
+  transition:all 0.7s;
+}
+.dx-header .logo img{
+  width: 51px;
+}
+
+.dx-header .logo:after, .dx-nav li:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 23px;
+  height: 24px;
+  width: 1px;
+  background-color: #1b222b;
+}
+
+.dx-header .layui-main {
+  margin: 0;
+}
+
+.dx-header .title {
+  font-size: 24px;
+  color: #c4c4c4;
+  position: absolute;
+  left: 235px;
+  line-height: 70px;
+  transition:all 0.7s;
+}
+.dx-header .title .menu-icon{
+  width: 60px;
+}
+
+.dx-header .title .menu-icon i{
+  font-size: 34px;
+}
+
+.dx-nav {
+  position: absolute;
+  right: 0;
+}
+
+.dx-nav li {
+  float: left;
+  color: #d8d8d8;
+  font-size: 14px;
+  line-height: 70px;
+  padding: 0 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+.dx-nav li:hover,.dx-nav li:hover i {
+  color: #ffffff;
+}
+
+.dx-nav li:last-child {
+  padding-right: 30px;
+}
+
+.dx-nav li span.icon i {
+  font-size: 18px;
+  color: #242b33;
+}
+
+.dx-nav li span.icon {
+  margin-right: 10px;
+  display: inline-block;
+  width: 38px;
+  height: 38px;
+  background-color: #424e5c;
+  border-radius: 50%;
+  line-height: 38px;
+  text-align: center;
+  vertical-align: middle;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no"/>-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">-->
+  <title>登录-TailorX Factory</title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link rel="stylesheet" href="plugins/layui/css/layui.css">
+  <link rel="stylesheet" href="styles/css/main.css">
+  <link rel="stylesheet" href="styles/css/login.css?__inline">
+</head>
+<body>
+<div class="login-top"></div>
+<section class="login-box" id="login-app">
+  <div style="text-align: center">
+    <i class="logo"></i>
+    <span class="title">TailorX Factory</span>
+  </div>
+
+  <div class="login-form">
+    <div class="layui-form-item" @click="clickInput($event,'usernameFocus')"
+         v-bind:class="[usernameFocus]">
+      <span class="placeholder">您的手机号或用户名</span>
+      <label class="layui-form-label"><i class="iconfont icon-shouji"></i></label>
+      <div class="layui-input-inline">
+        <input type="text" placeholder="" autocomplete="off" class="layui-input username"
+               v-on:blur="usernameFocus = username ? 'exist' : ''" v-model="username">
+      </div>
+    </div>
+    <div class="layui-form-item" style="margin-top: 30px" @click="clickInput($event,'passwordFocus')"
+         v-bind:class="[passwordFocus]">
+      <span class="placeholder">密码</span>
+      <label class="layui-form-label"><i class="iconfont icon-suo"></i></label>
+      <div class="layui-input-inline">
+        <input type="password" autocomplete="off" class="layui-input password"
+               v-on:blur="passwordFocus = password ? 'exist' : ''" v-model="password">
+      </div>
+    </div>
+      <div class="layui-form-item" style="margin-top: 40px">
+        <div class="layui-input-block" style="margin-left: 48px;margin-right: 20px">
+          <button type="button" class="layui-btn" @click="submitLogin">登录</button>
+        </div>
+      </div>
+  </div>
+</section>
+
+<footer class="login-footer">
+  <p>联系电话：<a href="tel:021-60499347">021-60499347</a> &nbsp;&nbsp;
+    地址：上海市黄浦区马当路388号复兴广场E栋2楼</p>
+  <p>Copyright © 2015-2017 &nbsp;&nbsp; www.tailorx.cn. All rights reserved.tailorx.</p>
+</footer>
+
+<script type="text/javascript" src="plugins/layui/layui.js"></script>
+<script type="text/javascript" src="plugins/underscore-min.js"></script>
+<script type="text/javascript" src="plugins/vue.js"></script>
+<script type="text/javascript" src="javascript/main.js?__inline"></script>
+<script type="text/javascript" src="app.js?__inline"></script>
+<script type="text/javascript">
+  layui.use(['layer', 'element', '_route', 'form'], function () {
+    var $=layui.jquery
+      , vue;
+    vue = new Vue({
+      el:'#login-app',
+      data:{usernameFocus:'',passwordFocus:false,username:'',password:''},
+      methods:{
+        clickInput:function (_this,key) {
+          var e=$(_this.currentTarget);
+          this[key]='active';
+          e.find('input').focus();
+        },
+        submitLogin:function () {
+          var str,strEl;
+          if(!this.username){
+            str='请输入用户名';
+            strEl='username';
+          }else if(!this.password){
+            str='请输入密码';
+            strEl='password';
+          }
+          str&&strEl&&layer.tips(str, '.'+strEl, {
+            tips: [1, '#ff3366']
+          });
+
+          if(this.username&&this.password){
+            window.location.href='index.html';
+          }
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+body {
+  background-color: #ffffff;
+}
+
+.login-top {
+  position: absolute;
+  width: 100%;
+  height: 398px;
+  background-image: url("../../images/login-back.jpg");
+  background-position: center;
+  z-index: -1;
+}
+
+.login-footer {
+  position: absolute;
+  bottom: 0;
+  color: #ffffff;
+  background-color: #2f2f2f;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  text-align: center;
+  z-index: -1;
+}
+
+.login-footer a {
+  color: #ffffff;
+}
+
+.login-footer p {
+  line-height: 24px;
+}
+.login-box{
+  width: 500px;
+  height: 400px;
+  background-color: #ffffff;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -250px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+}
+.login-box .logo{
+  display: inline-block;
+  background-image: url("../../images/logo.png");
+  width: 70px;
+  height: 70px;
+  vertical-align: middle;
+  margin: 30px 20px 20px 0;
+  background-size: 100% 100%;
+}
+.login-box .title{
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 30px;
+}
+.login-form{
+  padding-left: 45px;
+  padding-right: 45px;
+  margin-top: 15px;
+}
+.login-form .layui-form-label{
+  width: auto;
+}
+.login-form .layui-form-label i{
+  font-size: 18px;
+}
+.login-form .layui-input{
+  border: none;
+  border-radius: 0;
+  padding-left: 0;
+  border-bottom: 1px solid #e6e6e6;
+}
+.login-form .layui-input-inline{
+  width: 340px;
+}
+.login-form .placeholder{
+  position: absolute;
+  z-index: 2;
+  color: #b3b3b3;
+  left: 48px;
+  bottom: 10px;
+  font-size: 16px;
+  transition: transform ease 0.3s, color ease 0.3s;
+}
+.login-form .layui-form-item{
+  position: relative;
+}
+.login-form .layui-form-item:before{
+  content: '';
+  position: absolute;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  left: 48px;
+  z-index: 2;
+  background-color: #ff3366;
+  transition: width .6s;
+}
+.login-form .layui-form-item.active:before{
+  width:340px;
+}
+
+.login-form .layui-form-item.exist .placeholder{
+  transform: translateY(-120%) translateX(-10%) scale(.82);
+}
+.login-form .layui-form-item.active .placeholder{
+  transform: translateY(-120%) translateX(-10%) scale(.82);
+  color: #ff3366;
+}
+.login-form .layui-form-item.active .layui-form-label i{
+  color: #ff3366;
+}
+.login-form .layui-btn{
+  background-color: #ff3366;
+  width: 100%;
+}
